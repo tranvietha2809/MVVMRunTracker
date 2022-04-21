@@ -11,13 +11,13 @@ object TrackingUtility {
             context,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
-        );
+        )
     } else {
         EasyPermissions.hasPermissions(
             context,
             Manifest.permission.ACCESS_BACKGROUND_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
-        );
+        )
     }
 }

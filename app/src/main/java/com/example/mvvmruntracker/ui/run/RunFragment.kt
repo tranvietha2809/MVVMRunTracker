@@ -19,6 +19,7 @@ import com.example.mvvmruntracker.other.TrackingUtility
 import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import timber.log.Timber
 
 @AndroidEntryPoint
 class RunFragment : Fragment() {
@@ -45,7 +46,7 @@ class RunFragment : Fragment() {
     private lateinit var runFragmentBinding: RunFragmentBinding
     private val DENIED : String = "DENIED"
     private val EXPLAINED : String = "EXPLAINED"
-    val locationPermissionRequest = registerForActivityResult(
+        private val locationPermissionRequest = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { result ->
         val deniedList : List<String> = result.filter {
@@ -67,7 +68,7 @@ class RunFragment : Fragment() {
                 }
             }
             else -> {
-                Log.d("Location permissions", "All permissions granted")
+                Timber.d("All permissions granted")
             }
         }
     }

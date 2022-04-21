@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Room
 import com.example.mvvmruntracker.db.RunningDatabase
 import com.example.mvvmruntracker.other.Constants
+import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ActivityContext
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
