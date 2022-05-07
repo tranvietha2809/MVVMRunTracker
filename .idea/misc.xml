@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/Flutter/MVVMRunTracker/app/src/main/res/drawable/ic_close_white.xml" value="0.182" />
         <entry key="..\:/Project/Flutter/MVVMRunTracker/app/src/main/res/layout/tracking_fragment.xml" value="0.22" />
       </map>
     </option>

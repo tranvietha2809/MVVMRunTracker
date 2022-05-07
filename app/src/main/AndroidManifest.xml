@@ -28,6 +28,8 @@
 
         <service
             android:name=".services.TrackingService"
+            android:enabled="true"
+            android:exported="false"
             android:foregroundServiceType="location"/>
 
         <meta-data
