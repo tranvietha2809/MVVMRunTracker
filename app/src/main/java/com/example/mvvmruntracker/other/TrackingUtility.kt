@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.location.Location
 import android.os.Build
+import androidx.annotation.RequiresApi
 import com.example.mvvmruntracker.services.Polyline
 import pub.devrel.easypermissions.EasyPermissions
 import java.text.DecimalFormat
@@ -27,6 +28,7 @@ object TrackingUtility {
             )
         }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     fun hasBackgroundLocationPermission(context: Context) =
         EasyPermissions.hasPermissions(context, Manifest.permission.ACCESS_BACKGROUND_LOCATION)
 

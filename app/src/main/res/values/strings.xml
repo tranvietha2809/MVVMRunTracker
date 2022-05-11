@@ -3,8 +3,8 @@
     <string-array name="filter_options">
         <item>Date</item>
         <item>Running Time</item>
-        <item>Distance</item>
         <item>Average Speed</item>
+        <item>Distance</item>
         <item>Calories Burned</item>
     </string-array>
 </resources>
