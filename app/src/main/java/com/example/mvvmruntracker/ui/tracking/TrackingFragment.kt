@@ -1,6 +1,7 @@
 package com.example.mvvmruntracker.ui.tracking
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.example.mvvmruntracker.other.Constants.ACTION_STOP_SERVICE
 import com.example.mvvmruntracker.other.Constants.MAP_ZOOM
 import com.example.mvvmruntracker.other.Constants.POLYLINE_COLOR
 import com.example.mvvmruntracker.other.Constants.POLYLINE_WIDTH
+import com.example.mvvmruntracker.other.SharedPrefs
 import com.example.mvvmruntracker.other.TrackingUtility
 import com.example.mvvmruntracker.services.Polyline
 import com.example.mvvmruntracker.services.TrackingService
@@ -29,28 +31,27 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.tracking_fragment.*
 import java.util.*
+import javax.inject.Inject
 import kotlin.math.round
 
 @AndroidEntryPoint
 class TrackingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = TrackingFragment()
-    }
+    @Inject
+    lateinit var sharedPrefs : SharedPreferences
 
     private val viewModel: TrackingViewModel by viewModels()
 
     private var isTracking = false
     private var pathPoints = mutableListOf<Polyline>()
     private lateinit var trackingFragmentBinding: TrackingFragmentBinding
-
     private var map: GoogleMap? = null
 
     private var curTimeInMillis = 0L
 
     private var menu: Menu? = null
 
-    private var weight = 80f
+    private var weight = sharedPrefs.getFloat(SharedPrefs.KEY_WEIGHT, 0f)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
