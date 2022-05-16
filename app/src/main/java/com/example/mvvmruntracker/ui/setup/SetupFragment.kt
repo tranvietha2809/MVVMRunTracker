@@ -64,11 +64,14 @@ class SetupFragment : Fragment(R.layout.setup_fragment) {
         if (name.isEmpty() || weight.isEmpty()) {
             return false
         }
-        sharedPref.edit()
-            .putString(SharedPrefs.KEY_NAME, name)
-            .putFloat(SharedPrefs.KEY_WEIGHT, weight.toFloat())
-            .putBoolean(SharedPrefs.KEY_FIRST_TIME_TOGGLE, false)
-            .apply()
+//        sharedPref.edit()
+//            .putString(SharedPrefs.KEY_NAME, name)
+//            .putFloat(SharedPrefs.KEY_WEIGHT, weight.toFloat())
+//            .putBoolean(SharedPrefs.KEY_FIRST_TIME_TOGGLE, false)
+//            .apply()
+        viewModel.saveNameToSharedPrefs(name)
+        viewModel.saveWeightToSharedPrefs(weight.toFloat())
+        viewModel.saveFirstTimeToggleToSharedPrefs(false)
         val toolbarText = "Let's go, $name!"
         (requireActivity() as MainActivity).activityMainBinding.tvToolbarTitle.text = toolbarText
         return true
