@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.2.2"
+        classpath "com.android.tools.build:gradle:7.0.4"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.41'
@@ -20,6 +20,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }

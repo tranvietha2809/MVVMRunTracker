@@ -16,7 +16,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class SetupViewModelTest {
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var setupViewModel : SetupViewModel
+    private lateinit var setupViewModel: SetupViewModel
     private lateinit var context: Context
 
     val name = "NAME"
@@ -26,7 +26,8 @@ class SetupViewModelTest {
     @Before
     fun setup() {
         context = ApplicationProvider.getApplicationContext()
-        sharedPreferences = context.getSharedPreferences(SharedPrefs.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
+        sharedPreferences =
+            context.getSharedPreferences(SharedPrefs.SHARED_PREFERENCES_NAME, MODE_PRIVATE)
         setupViewModel = SetupViewModel(sharedPreferences)
         sharedPreferences.edit().clear().apply()
     }
@@ -45,8 +46,13 @@ class SetupViewModelTest {
 
     @Test
     fun saveFirstTimeToSharedPrefs() {
-        setupViewModel.saveWeightToSharedPrefs(weight)
-        assertEquals(sharedPreferences.getFloat(SharedPrefs.KEY_WEIGHT, 0f), weight)
+        setupViewModel.saveFirstTimeToggleToSharedPrefs(isFirstTimeToggle)
+        assertEquals(
+            sharedPreferences.getBoolean(
+                SharedPrefs.KEY_FIRST_TIME_TOGGLE,
+                isFirstTimeToggle
+            ), isFirstTimeToggle
+        )
     }
 
     @After

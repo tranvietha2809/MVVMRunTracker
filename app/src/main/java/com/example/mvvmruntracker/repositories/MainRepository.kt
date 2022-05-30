@@ -5,7 +5,7 @@ import com.example.mvvmruntracker.db.RunDAO
 import javax.inject.Inject
 
 class MainRepository @Inject constructor(
-    val runDAO: RunDAO
+    private val runDAO: RunDAO
 ) {
     suspend fun insertRun(run:Run) = runDAO.insertRun(run)
 

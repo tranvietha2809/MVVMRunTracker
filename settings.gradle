@@ -1,2 +1,3 @@
 rootProject.name = "MVVMRunTracker"
 include ':app'
+//maven { url 'https://jitpack.io' }

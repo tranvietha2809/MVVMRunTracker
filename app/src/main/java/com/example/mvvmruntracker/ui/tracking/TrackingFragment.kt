@@ -33,6 +33,7 @@ import kotlinx.android.synthetic.main.tracking_fragment.*
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.round
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class TrackingFragment : Fragment() {
@@ -51,7 +52,6 @@ class TrackingFragment : Fragment() {
 
     private var menu: Menu? = null
 
-    private var weight = sharedPrefs.getFloat(SharedPrefs.KEY_WEIGHT, 0f)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -194,7 +194,7 @@ class TrackingFragment : Fragment() {
             val avgSpeed =
                 round((distanceInMeters / 1000f) / (curTimeInMillis / 1000f / 60f / 60f) * 10) / 10f
             val dateTimeStamp = Calendar.getInstance().timeInMillis
-            val caloriesBurned = ((distanceInMeters / 1000f) * weight).toInt()
+            val caloriesBurned = ((distanceInMeters / 1000f) * sharedPrefs.getFloat(SharedPrefs.KEY_WEIGHT, 80f)).toInt()
             val run =
                 Run(bmp, dateTimeStamp, avgSpeed, distanceInMeters, curTimeInMillis, caloriesBurned)
             viewModel.insertRun(run)
